@@ -1,0 +1,33 @@
+{
+  "name": "loggedmessage",
+  "version": "1.0.0",
+  "description": "a simple but flexible console logging library with common-sense builtin functions and defaults",
+  "type": "module",
+  "main": "loggedmessage.js",
+  "scripts": {
+    "test": "node ./tests/tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickesc/loggedmessage.git"
+  },
+  "author": "N. Escobar <nick@nescobar.media> (https://nickesc.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nickesc/loggedmessage/issues"
+  },
+  "homepage": "https://github.com/nickesc/loggedmessage#readme",
+  "keywords": [
+    "logging",
+    "logger",
+    "utility",
+    "tool",
+    "debug",
+    "console",
+    "log",
+    "error",
+    "warn",
+    "configurable",
+    "dotenv"
+  ]
+}
