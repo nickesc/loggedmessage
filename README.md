@@ -2,7 +2,7 @@
   <a href="https://github.com/nickesc/loggedmessage"><img alt="Source: github.com/nickesc/loggedmessage" src="https://img.shields.io/badge/source-github.com/nickesc/loggedmessage-brightgreen?style=for-the-badge"></a><br>
   <a href="https://www.npmjs.com/package/loggedmessage"><img alt="NPM: npmjs.com/package/loggedmessage" src="https://img.shields.io/badge/npm-npmjs.com/package/loggedmessage-C12127?style=for-the-badge"></a>
   <br><br>
-  <a href="https://github.com/nickesc/loggedmessage"><img style="margin-top: .5em" alt="Source: github.com/nickesc/loggedmessage" src="https://img.shields.io/github/actions/workflow/status/nickesc/loggedmessage/node.js.yml?logo=github&label=test"></a><br>
+  <a href="https://github.com/nickesc/loggedmessage/actions/workflows/node.js.yml"><img style="margin-top: .5em" alt="Source: github.com/nickesc/loggedmessage" src="https://img.shields.io/github/actions/workflow/status/nickesc/loggedmessage/node.js.yml?logo=github&label=test"></a><br>
   <h3 align="center">
     <code>loggedmessage</code>
   </h3>
