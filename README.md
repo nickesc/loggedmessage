@@ -45,7 +45,7 @@ import loggedmessage from "loggedmessage";
 import { logm, errm, throwm, warnm, infom, timem } from "loggedmessage";
 ```
 
-The core of `loggedmessage` is the logging functions it provides you. To log to the console:
+The core of `loggedmessage` is the logging functions it provides. To log to the console:
 
 ``` js
 import lm from "loggedmessage";
@@ -94,10 +94,10 @@ ERROR_MESSAGE = "a new error has occurred"
 TIMEM_LOCALE = "en-GB"
 ```
 
-If `dotenv` is not installed, `loggedmessage` will use builtin defaults.
+If `dotenv` is not installed, `loggedmessage` will use the builtin defaults.
 
-# Documentation
-## `logm()`
+## Documentation
+### `logm()`
 
 Log a message to the console.
 
@@ -121,8 +121,8 @@ LOG | message
 
 **Returns [*`string`*][1]** - the full message string as `{prefix}{separator} {message}`.
 
-
-## `errm()`
+-----
+### `errm()`
 
 Log an error to the console with the desired message.
 
@@ -149,8 +149,8 @@ ERROR | message
 
 **Returns [*`string`*][1]** - the full error message string as `{prefix}{separator} {message}`.
 
-
-## `throwm()`
+-----
+### `throwm()`
 
 Throw an error with the desired message.
 
@@ -180,8 +180,8 @@ Error: error
 
 **Returns [*`string`*][1]** - the full error message string as `{prefix}{separator} {message}`.
 
-
-## `warnm()`
+-----
+### `warnm()`
 
 Log a warning message/error to the console with the desired message.
 
@@ -207,8 +207,8 @@ WARNM | message
 
 **Returns [*`string`*][1]** - the full warning message string as `{prefix}{separator} {message}`.
 
-
-## `infom()`
+-----
+### `infom()`
 
 Log an info message/error to the console with the desired message.
 
@@ -234,8 +234,8 @@ INFOM | message
 
 **Returns [*`string`*][1]** - the full info message string as `{prefix}{separator} {message}`.
 
-
-## `timem()`
+-----
+### `timem()`
 
 Log a message/error to the console with the desired message and the current time.
 
@@ -261,8 +261,8 @@ timem("message", new Error("error")," |");
 
 **Returns [*`string`*][1]** - the full message string as `{prefix}{separator} {message}`.
 
-
-## `printm()`
+-----
+### `printm()`
 
 Print a message to the console (wrapper for `console.log()`).
 
