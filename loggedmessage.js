@@ -59,11 +59,10 @@ function checkObject(target){
  *
  * Log a message to the console.
  *
- * @param    {string | object}  message    -  the message content.
- * @param    {string}           prefix     -  the message prefix text.
- * @param    {string}           separator  -  the separator string between the prefix and message text.
+ * @param    {any}     message    -  the message content.
+ * @param    {string}  prefix     -  the message prefix text.
+ * @param    {string}  separator  -  the separator string between the prefix and message text.
  * @returns  {string}  the full message string as `{prefix}{separator} {message}`.
- *
  * @example
  *
  * ###### Code:
@@ -92,12 +91,11 @@ function logm(message = null, prefix = null, separator = null){
  *
  * Log an error to the console with the desired message.
  *
- * @param    {string | object}  message    -  the error message content.
- * @param    {Error}            err        -  a target error to print to print.
- * @param    {string}           prefix     -  the error message prefix text.
- * @param    {string}           separator  -  the separator string between the prefix and error message text.
+ * @param    {any}     message    -  the error message content.
+ * @param    {Error}   err        -  a target error to print to print.
+ * @param    {string}  prefix     -  the error message prefix text.
+ * @param    {string}  separator  -  the separator string between the prefix and error message text.
  * @returns  {string}  the full error message string as `{prefix}{separator} {message}`.
- *
  * @example
  *
  * ###### Code:
@@ -133,12 +131,11 @@ function errm(message = null, err = null, prefix = null, separator = null){
  *
  * Throw an error with the desired message.
  *
- * @param    {string | object}  message    -  the error message content.
- * @param    {Error}            err        -  a target error to print.
- * @param    {string}           prefix     -  the error message prefix text.
- * @param    {string}           separator  -  the separator string between the prefix and error message text.
+ * @param    {any}     message    -  the error message content.
+ * @param    {Error}   err        -  a target error to print.
+ * @param    {string}  prefix     -  the error message prefix text.
+ * @param    {string}  separator  -  the separator string between the prefix and error message text.
  * @returns  {string}  the full error message string as `{prefix}{separator} {message}`.
- *
  * @example
  *
  * ###### Code:
@@ -176,11 +173,10 @@ function throwm(message = null, err = null, prefix = null, separator = null){
  *
  * Log a warning message/error to the console with the desired message.
  *
- * @param    {string | object}  message    -  the warning message content.
- * @param    {Error}            err        -  a target error to print.
- * @param    {string}           separator  -  the separator string between the prefix and warning message text.
+ * @param    {any}     message    -  the warning message content.
+ * @param    {Error}   err        -  a target error to print.
+ * @param    {string}  separator  -  the separator string between the prefix and warning message text.
  * @returns  {string}  the full warning message string as `{prefix}{separator} {message}`.
- *
  * @example
  *
  * ###### Code:
@@ -204,11 +200,10 @@ function warnm(message = null, err = null, separator = null){
  *
  * Log an info message/error to the console with the desired message.
  *
- * @param    {string | object}  message    -  the info message content.
- * @param    {Error}            err        -  a target error to print.
- * @param    {string}           separator  -  the separator string between the prefix and info message text.
+ * @param    {any}     message    -  the info message content.
+ * @param    {Error}   err        -  a target error to print.
+ * @param    {string}  separator  -  the separator string between the prefix and info message text.
  * @returns  {string}  the full info message string as `{prefix}{separator} {message}`.
- *
  * @example
  *
  * ###### Code:
@@ -238,11 +233,10 @@ function infom(message = null, err = null, separator = null){
  *
  * Log a message/error to the console with the desired message and the current time.
  *
- * @param    {string | object}  message    -  the message content.
- * @param    {Error}            err        -  a target error to print.
- * @param    {string}           separator  -  the separator string between the prefix and message text.
+ * @param    {any}     message    -  the message content.
+ * @param    {Error}   err        -  a target error to print.
+ * @param    {string}  separator  -  the separator string between the prefix and message text.
  * @returns  {string}  the full message string as `{prefix}{separator} {message}`.
- *
  * @example
  *
  * ###### Code:
@@ -273,11 +267,9 @@ function timem(message = null, err = null, separator = null) {
  *
  * Print a message to the console (wrapper for `console.log()`).
  *
- * @param    {string | object}  message           -  the message content.
- * @param    {...object}        additionalOutput  -  additional values or objects for output.
- *
- * @returns  {string}  the first message argument printed.
- *
+ * @param    {any}     message         -  the message content.
+ * @param    {...any}  optionalParams  -  additional values or objects for output.
+ * @returns  {string}  the first argument printed.
  * @example
  *
  * ###### Code:

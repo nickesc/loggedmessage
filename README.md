@@ -103,7 +103,7 @@ Log a message to the console.
 
 ### Parameters
 
-*   `message` *( [`string`][1] | [`object`][2] )* - the message content. (optional, default `null`)
+*   `message` *`any`* - the message content. (optional, default `null`)
 *   `prefix` *[`string`][1]* - the message prefix text. (optional, default `null`)
 *   `separator` *[`string`][1]* - the separator string between the prefix and message text. (optional, default `null`)
 
@@ -128,8 +128,8 @@ Log an error to the console with the desired message.
 
 ### Parameters
 
-*   `message` *( [`string`][1] | [`object`][2] )* - the error message content. (optional, default `null`)
-*   `err` *[`error`][3]* - a target error to print to print. (optional, default `null`)
+*   `message` *`any`* - the error message content. (optional, default `null`)
+*   `err` *[`error`][2]* - a target error to print to print. (optional, default `null`)
 *   `prefix` *[`string`][1]* - the error message prefix text. (optional, default `null`)
 *   `separator` *[`string`][1]* - the separator string between the prefix and error message text. (optional, default `null`)
 
@@ -156,8 +156,8 @@ Throw an error with the desired message.
 
 ### Parameters
 
-*   `message` *( [`string`][1] | [`object`][2] )* - the error message content. (optional, default `null`)
-*   `err` *[`error`][3]* - a target error to print. (optional, default `null`)
+*   `message` *`any`* - the error message content. (optional, default `null`)
+*   `err` *[`error`][2]* - a target error to print. (optional, default `null`)
 *   `prefix` *[`string`][1]* - the error message prefix text. (optional, default `null`)
 *   `separator` *[`string`][1]* - the separator string between the prefix and error message text. (optional, default `null`)
 
@@ -187,8 +187,8 @@ Log a warning message/error to the console with the desired message.
 
 ### Parameters
 
-*   `message` *( [`string`][1] | [`object`][2] )* - the warning message content. (optional, default `null`)
-*   `err` *[`error`][3]* - a target error to print. (optional, default `null`)
+*   `message` *`any`* - the warning message content. (optional, default `null`)
+*   `err` *[`error`][2]* - a target error to print. (optional, default `null`)
 *   `separator` *[`string`][1]* - the separator string between the prefix and warning message text. (optional, default `null`)
 
 ### Examples
@@ -214,8 +214,8 @@ Log an info message/error to the console with the desired message.
 
 ### Parameters
 
-*   `message` *( [`string`][1] | [`object`][2] )* - the info message content. (optional, default `null`)
-*   `err` *[`error`][3]* - a target error to print. (optional, default `null`)
+*   `message` *`any`* - the info message content. (optional, default `null`)
+*   `err` *[`error`][2]* - a target error to print. (optional, default `null`)
 *   `separator` *[`string`][1]* - the separator string between the prefix and info message text. (optional, default `null`)
 
 ### Examples
@@ -241,8 +241,8 @@ Log a message/error to the console with the desired message and the current time
 
 ### Parameters
 
-*   `message` *( [`string`][1] | [`object`][2] )* - the message content. (optional, default `null`)
-*   `err` *[`error`][3]* - a target error to print. (optional, default `null`)
+*   `message` *`any`* - the message content. (optional, default `null`)
+*   `err` *[`error`][2]* - a target error to print. (optional, default `null`)
 *   `separator` *[`string`][1]* - the separator string between the prefix and message text. (optional, default `null`)
 
 ### Examples
@@ -268,8 +268,8 @@ Print a message to the console (wrapper for `console.log()`).
 
 ### Parameters
 
-*   `message` *( [`string`][1] | [`object`][2] )* - the message content.
-*   `additionalOutput` *[`...object`][2]* - additional values or objects for output.
+*   `message` *`any`* - the message content.
+*   `optionalParams` *`...any`* - additional values or objects for output.
 
 ### Examples
 
@@ -282,10 +282,8 @@ printm("message", "additional output");
 message additional output
 ```
 
-**Returns [*`string`*][1]** - the first message argument printed.
+**Returns [*`string`*][1]** - the first argument printed.
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
-
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
