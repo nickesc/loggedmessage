@@ -23,11 +23,11 @@ await import("dotenv")  // try to import dotenv if it is in the project
 const prefixAbr = dotenvConfig.PREFIX_ABR || "";  // abbreviation string before the message type
 const prefixSeparator = dotenvConfig.PREFIX_SEPARATOR || "";  // separator string between the abbreviation and message type
 
-const defaultLogmPrefix = `${prefixAbr}${prefixSeparator}${dotenvConfig.LOGM_PREFIX || "LOGM"}`;  // default message type for log messages
-const defaultErrmPrefix = `${prefixAbr}${prefixSeparator}${dotenvConfig.ERRM_PREFIX || "ERRM"}`;  // default message type for error messages
+const defaultLogmPrefix   = `${prefixAbr}${prefixSeparator}${dotenvConfig.LOGM_PREFIX || "LOGM"}`;  // default message type for log messages
+const defaultErrmPrefix   = `${prefixAbr}${prefixSeparator}${dotenvConfig.ERRM_PREFIX || "ERRM"}`;  // default message type for error messages
 const defaultThrowmPrefix = `${prefixAbr}${prefixSeparator}${dotenvConfig.THROWM_PREFIX || "THROWM"}`;  // default message type for thrown error messages
-const defaultWarnmPrefix = `${prefixAbr}${prefixSeparator}${dotenvConfig.WARNM_PREFIX || "WARNM"}`;  // default message type for warning messages
-const defaultInfomPrefix = `${prefixAbr}${prefixSeparator}${dotenvConfig.INFOM_PREFIX || "INFOM"}`;  // default message type for info messages
+const defaultWarnmPrefix  = `${prefixAbr}${prefixSeparator}${dotenvConfig.WARNM_PREFIX || "WARNM"}`;  // default message type for warning messages
+const defaultInfomPrefix  = `${prefixAbr}${prefixSeparator}${dotenvConfig.INFOM_PREFIX || "INFOM"}`;  // default message type for info messages
 
 const timemLocale = dotenvConfig.TIMEM_LOCALE || "en-US";  // set the time locale
 function defaultTimemPrefix () {  // function to return the formatted time prefix on time messages
@@ -59,21 +59,22 @@ function checkObject(target){
  *
  * Log a message to the console.
  *
- * #### Example:
+ * @param    {string | object}  message    -  the message content.
+ * @param    {string}           prefix     -  the message prefix text.
+ * @param    {string}           separator  -  the separator string between the prefix and message text.
+ * @returns  {string}  the full message string as `{prefix}{separator} {message}`.
  *
+ * @example
+ *
+ * ###### Code:
  * ```js
  * logm("message","LOG"," |");
  * ```
  *
+ * ###### Output:
  * ```txt
- * Output:
  * LOG | message
  * ```
- *
- * @param   message  {any}  the message text.
- * @param   prefix  {string}  the message prefix text.
- * @param   separator  {string}  the separator string between the prefix and message text.
- * @returns {string} the full message string as `{prefix}{separator} {message}`.
  */
 function logm(message = null, prefix = null, separator = null){
     let logMessage = message || defaultLogMessage;  // set message content
@@ -91,24 +92,25 @@ function logm(message = null, prefix = null, separator = null){
  *
  * Log an error to the console with the desired message.
  *
- * #### Example:
+ * @param    {string | object}  message    -  the error message content.
+ * @param    {Error}            err        -  a target error to print to print.
+ * @param    {string}           prefix     -  the error message prefix text.
+ * @param    {string}           separator  -  the separator string between the prefix and error message text.
+ * @returns  {string}  the full error message string as `{prefix}{separator} {message}`.
  *
+ * @example
+ *
+ * ###### Code:
  * ```js
  * errm("message", new Error("error"),"ERROR"," |");
  * ```
  *
+ * ###### Output:
  * ```txt
- * Output:
  * ERROR | message
  *  Error: error
  *     at errorLocation
  * ```
- *
- * @param   message  {any}  the error message text.
- * @param   err  {Error}  a target error to print to print.
- * @param   prefix  {string}  the error message prefix text.
- * @param   separator  {string}  the separator string between the prefix and error message text.
- * @returns {string} the full error message string as `{prefix}{separator} {message}`.
  */
 function errm(message = null, err = null, prefix = null, separator = null){
     let errMessage = message || defaultErrMessage;  // set error content
@@ -131,14 +133,21 @@ function errm(message = null, err = null, prefix = null, separator = null){
  *
  * Throw an error with the desired message.
  *
- * #### Example:
+ * @param    {string | object}  message    -  the error message content.
+ * @param    {Error}            err        -  a target error to print.
+ * @param    {string}           prefix     -  the error message prefix text.
+ * @param    {string}           separator  -  the separator string between the prefix and error message text.
+ * @returns  {string}  the full error message string as `{prefix}{separator} {message}`.
  *
+ * @example
+ *
+ * ###### Code:
  * ```js
  * throwm("message", new Error("error"),"ERROR"," |");
  * ```
  *
+ * ###### Output:
  * ```txt
- * Output:
  * ERROR | message
  * errorLocation
  * throwm("message", new Error("error"), "ERROR", " |");
@@ -146,12 +155,6 @@ function errm(message = null, err = null, prefix = null, separator = null){
  * Error: error
  *     at errorLocation
  * ```
- *
- * @param   message  {any}  the error message text.
- * @param   err  {Error}  a target error to print.
- * @param   prefix  {string}  the error message prefix text.
- * @param   separator  {string}  the separator string between the prefix and error message text.
- * @returns {string} the full error message string as `{prefix}{separator} {message}`.
  */
 function throwm(message = null, err = null, prefix = null, separator = null){
     let errMessage = message || defaultErrMessage;  // set error content
@@ -173,23 +176,24 @@ function throwm(message = null, err = null, prefix = null, separator = null){
  *
  * Log a warning message/error to the console with the desired message.
  *
- * #### Example:
+ * @param    {string | object}  message    -  the warning message content.
+ * @param    {Error}            err        -  a target error to print.
+ * @param    {string}           separator  -  the separator string between the prefix and warning message text.
+ * @returns  {string}  the full warning message string as `{prefix}{separator} {message}`.
  *
+ * @example
+ *
+ * ###### Code:
  * ```js
  * warnm("message", new Error("error")," |");
  * ```
  *
+ * ###### Output:
  * ```txt
- * Output:
  * WARNM | message
  *  Error: error
  *     at errorLocation
  * ```
- *
- * @param   message  {any}  the warning message text.
- * @param   err  {Error}  a target error to print.
- * @param   separator  {string}  the separator string between the prefix and warning message text.
- * @returns {string} the full warning message string as `{prefix}{separator} {message}`.
  */
 function warnm(message = null, err = null, separator = null){
     return errm(message, err, defaultWarnmPrefix, separator);  // send and return an error as a warning
@@ -200,23 +204,24 @@ function warnm(message = null, err = null, separator = null){
  *
  * Log an info message/error to the console with the desired message.
  *
- * #### Example:
+ * @param    {string | object}  message    -  the info message content.
+ * @param    {Error}            err        -  a target error to print.
+ * @param    {string}           separator  -  the separator string between the prefix and info message text.
+ * @returns  {string}  the full info message string as `{prefix}{separator} {message}`.
  *
+ * @example
+ *
+ * ###### Code:
  * ```js
  * infom("message", new Error("error")," |");
  * ```
  *
+ * ###### Output:
  * ```txt
- * Output:
  * INFOM | message
  *  Error: error
  *     at errorLocation
  * ```
- *
- * @param   message  {any}  the info message text.
- * @param   err  {Error}  a target error to print.
- * @param   separator  {string}  the separator string between the prefix and info message text.
- * @returns {string} the full info message string as `{prefix}{separator} {message}`.
  */
 function infom(message = null, err = null, separator = null){
     let infomPrefix = defaultInfomPrefix;  // set message content
@@ -233,23 +238,24 @@ function infom(message = null, err = null, separator = null){
  *
  * Log a message/error to the console with the desired message and the current time.
  *
- * #### Example:
+ * @param    {string | object}  message    -  the message content.
+ * @param    {Error}            err        -  a target error to print.
+ * @param    {string}           separator  -  the separator string between the prefix and message text.
+ * @returns  {string}  the full message string as `{prefix}{separator} {message}`.
  *
+ * @example
+ *
+ * ###### Code:
  * ```js
  * timem("message", new Error("error")," |");
  * ```
  *
+ * ###### Output:
  * ```txt
- * Output:
  * 1/1/1999, 12:30:00 AM | message
  *  Error: error
  *     at errorLocation
  * ```
- *
- * @param   message  {any}  the message text.
- * @param   err  {Error}  a target error to print.
- * @param   separator  {string}  the separator string between the prefix and message text.
- * @returns {string} the full message string as `{prefix}{separator} {message}`.
  */
 function timem(message = null, err = null, separator = null) {
     let timemPrefix = defaultTimemPrefix();  // set message content
@@ -261,5 +267,32 @@ function timem(message = null, err = null, separator = null) {
     }
 }
 
-export { logm, errm, throwm, warnm, infom, timem };
-export default { logm, errm, throwm, warnm, infom, timem };  // export functions
+
+/**
+ * ### `printm()`
+ *
+ * Print a message to the console (wrapper for `console.log()`).
+ *
+ * @param    {string | object}  message           -  the message content.
+ * @param    {...object}        additionalOutput  -  additional values or objects for output.
+ *
+ * @returns  {string}  the first message argument printed.
+ *
+ * @example
+ *
+ * ###### Code:
+ * ```js
+ * printm("message", "additional output");
+ * ```
+ * ###### Output:
+ * ```txt
+ * message additional output
+ * ```
+ */
+function printm(message) {
+    console.log.apply(console, arguments);
+    return message;
+}
+
+export { logm, errm, throwm, warnm, infom, timem, printm };
+export default { logm, errm, throwm, warnm, infom, timem, printm};  // export functions
