@@ -28,6 +28,8 @@ const testerSeparator = " ::"
 const testerErrMessage = "This is an intentionally thrown error"
 const testerError = new Error(testerErrMessage);
 
+const testerPrint = "a regularly printed message"
+
 const testerObject = {
     data: ["one", "two", "three"],
     number: 22557300,
@@ -38,7 +40,7 @@ const testerObject = {
         },
         things: ["billboards", "people", "occupations"],
         color: "red",
-        log: lm.logm(),
+        log: lm,
     },
 };
 
@@ -55,6 +57,8 @@ function testMessage(test, expectedResult){
         assert(test === expectedResult,true);
     } catch (err) {
         console.error(new Error(`Did not test as equal (test top, expectedResult bottom):\n${test}\n${expectedResult}`))
+        testLogm();
+        console.error("\n\nFAILURE: loggedmessage FAILED automated tests!\n\n");
         throw err;
     }
 }
@@ -67,15 +71,32 @@ function testThrow(message, err, prefix, separator, expectedResult){
         testErr = err;
         console.error(err);
     } finally {
-        if (!testErr) throw new Error("Test failed to produce an error")
-        if( testErr.message !== expectedResult) throw new Error(
-          `Did not test as equal (test top, expectedResult bottom):\n${test}\n${expectedResult}`
-        );
+        if (!testErr){
+            console.error("\n\nFAILURE: loggedmessage FAILED automated tests!\n\n");
+            throw new Error("Test failed to produce an error");
+        }
+        if( testErr.message !== expectedResult){
+            console.error("\n\nFAILURE: loggedmessage FAILED automated tests!\n\n");
+            throw new Error(`Did not test as equal (test top, expectedResult bottom):\n${test}\n${expectedResult}`);
+        }
 
     }
 }
 
 function testLogm(){
+
+    testMessage(
+        lm.printm(testerPrint),
+        testerPrint);
+    testMessage(
+        lm.printm(testerPrint, testerObject),
+        testerPrint);
+    testMessage(
+        lm.printm(""),
+        "");
+    testMessage(
+        lm.printm(),
+        undefined);
 
     testMessage(
         lm.logm(),
@@ -388,4 +409,5 @@ function testLogm(){
         `${testThrowmPrefix}${testSeparator} ${"Invalid configuration file"}`);
 }
 
-testLogm()
+testLogm();
+console.log("\n\nSUCCESS: loggedmessage PASSED automated tests!\n\n");
