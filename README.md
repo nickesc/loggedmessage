@@ -96,168 +96,196 @@ TIMEM_LOCALE = "en-GB"
 
 If `dotenv` is not installed, `loggedmessage` will use builtin defaults.
 
-## Documentation
-### `logm()`
+# Documentation
+## `logm()`
 
 Log a message to the console.
 
-#### Example:
+### Parameters
 
+*   `message` *( [`string`][1] | [`object`][2] )* - the message content. (optional, default `null`)
+*   `prefix` *[`string`][1]* - the message prefix text. (optional, default `null`)
+*   `separator` *[`string`][1]* - the separator string between the prefix and message text. (optional, default `null`)
+
+### Examples
+
+###### Code:
 ```js
 logm("message","LOG"," |");
 ```
 
+###### Output:
 ```txt
-Output:
 LOG | message
 ```
 
-#### Parameters
+**Returns [*`string`*][1]** - the full message string as `{prefix}{separator} {message}`.
 
-*   `message`  {`any`}  the message text. (optional, default `null`)
-*   `prefix`  {`string`}  the message prefix text. (optional, default `null`)
-*   `separator`  {`string`}  the separator string between the prefix and message text. (optional, default `null`)
 
-Returns **[`string`][1]** the full message string as `{prefix}{separator} {message}`.
-
-----
-
-### `errm()`
+## `errm()`
 
 Log an error to the console with the desired message.
 
-#### Example:
+### Parameters
 
+*   `message` *( [`string`][1] | [`object`][2] )* - the error message content. (optional, default `null`)
+*   `err` *[`error`][3]* - a target error to print to print. (optional, default `null`)
+*   `prefix` *[`string`][1]* - the error message prefix text. (optional, default `null`)
+*   `separator` *[`string`][1]* - the separator string between the prefix and error message text. (optional, default `null`)
+
+### Examples
+
+###### Code:
 ```js
 errm("message", new Error("error"),"ERROR"," |");
 ```
 
+###### Output:
 ```txt
-Output:
 ERROR | message
  Error: error
     at errorLocation
 ```
 
-#### Parameters
+**Returns [*`string`*][1]** - the full error message string as `{prefix}{separator} {message}`.
 
-*   `message`  {`any`}  the error message text. (optional, default `null`)
-*   `err`  {`Error`}  a target error to print to print. (optional, default `null`)
-*   `prefix`  {`string`}  the error message prefix text. (optional, default `null`)
-*   `separator`  {`string`}  the separator string between the prefix and error message text. (optional, default `null`)
 
-Returns **[`string`][1]** the full error message string as `{prefix}{separator} {message}`.
-
-----
-
-### `throwm()`
+## `throwm()`
 
 Throw an error with the desired message.
 
-#### Example:
+### Parameters
 
+*   `message` *( [`string`][1] | [`object`][2] )* - the error message content. (optional, default `null`)
+*   `err` *[`error`][3]* - a target error to print. (optional, default `null`)
+*   `prefix` *[`string`][1]* - the error message prefix text. (optional, default `null`)
+*   `separator` *[`string`][1]* - the separator string between the prefix and error message text. (optional, default `null`)
+
+### Examples
+
+###### Code:
 ```js
 throwm("message", new Error("error"),"ERROR"," |");
 ```
 
+###### Output:
 ```txt
-Output:
 ERROR | message
 errorLocation
 throwm("message", new Error("error"), "ERROR", " |");
                   ^
 Error: error
-   at errorLocation
+    at errorLocation
 ```
 
-#### Parameters
+**Returns [*`string`*][1]** - the full error message string as `{prefix}{separator} {message}`.
 
-*   `message`  {`any`}  the error message text. (optional, default `null`)
-*   `err`  {`Error`}  a target error to print. (optional, default `null`)
-*   `prefix`  {`string`}  the error message prefix text. (optional, default `null`)
-*   `separator`  {`string`}  the separator string between the prefix and error message text. (optional, default `null`)
 
-Returns **[`string`][1]** the full error message string as `{prefix}{separator} {message}`.
-
-----
-
-### `warnm()`
+## `warnm()`
 
 Log a warning message/error to the console with the desired message.
 
-#### Example:
+### Parameters
 
+*   `message` *( [`string`][1] | [`object`][2] )* - the warning message content. (optional, default `null`)
+*   `err` *[`error`][3]* - a target error to print. (optional, default `null`)
+*   `separator` *[`string`][1]* - the separator string between the prefix and warning message text. (optional, default `null`)
+
+### Examples
+
+###### Code:
 ```js
 warnm("message", new Error("error")," |");
 ```
 
+###### Output:
 ```txt
-Output:
 WARNM | message
  Error: error
     at errorLocation
 ```
 
-#### Parameters
+**Returns [*`string`*][1]** - the full warning message string as `{prefix}{separator} {message}`.
 
-*   `message`  {`any`}  the warning message text. (optional, default `null`)
-*   `err`  {`Error`}  a target error to print. (optional, default `null`)
-*   `separator`  {`string`}  the separator string between the prefix and warning message text. (optional, default `null`)
 
-Returns **[`string`][1]** the full warning message string as `{prefix}{separator} {message}`.
-
-----
-
-### `infom()`
+## `infom()`
 
 Log an info message/error to the console with the desired message.
 
-#### Example:
+### Parameters
 
+*   `message` *( [`string`][1] | [`object`][2] )* - the info message content. (optional, default `null`)
+*   `err` *[`error`][3]* - a target error to print. (optional, default `null`)
+*   `separator` *[`string`][1]* - the separator string between the prefix and info message text. (optional, default `null`)
+
+### Examples
+
+###### Code:
 ```js
 infom("message", new Error("error")," |");
 ```
 
+###### Output:
 ```txt
-Output:
 INFOM | message
  Error: error
     at errorLocation
 ```
 
-#### Parameters
+**Returns [*`string`*][1]** - the full info message string as `{prefix}{separator} {message}`.
 
-*   `message`  {`any`}  the info message text. (optional, default `null`)
-*   `err`  {`Error`}  a target error to print. (optional, default `null`)
-*   `separator`  {`string`}  the separator string between the prefix and info message text. (optional, default `null`)
 
-Returns **[`string`][1]** the full info message string as `{prefix}{separator} {message}`.
-
-----
-
-### `timem()`
+## `timem()`
 
 Log a message/error to the console with the desired message and the current time.
 
-#### Example:
+### Parameters
 
+*   `message` *( [`string`][1] | [`object`][2] )* - the message content. (optional, default `null`)
+*   `err` *[`error`][3]* - a target error to print. (optional, default `null`)
+*   `separator` *[`string`][1]* - the separator string between the prefix and message text. (optional, default `null`)
+
+### Examples
+
+###### Code:
 ```js
 timem("message", new Error("error")," |");
 ```
 
+###### Output:
 ```txt
-Output:
 1/1/1999, 12:30:00 AM | message
  Error: error
     at errorLocation
 ```
 
-#### Parameters
+**Returns [*`string`*][1]** - the full message string as `{prefix}{separator} {message}`.
 
-*   `message`  {`any`}  the message text. (optional, default `null`)
-*   `err`  {`Error`}  a target error to print. (optional, default `null`)
-*   `separator`  {`string`}  the separator string between the prefix and message text. (optional, default `null`)
 
-Returns **[`string`][1]** the full message string as `{prefix}{separator} {message}`.
+## `printm()`
+
+Print a message to the console (wrapper for `console.log()`).
+
+### Parameters
+
+*   `message` *( [`string`][1] | [`object`][2] )* - the message content.
+*   `additionalOutput` *[`...object`][2]* - additional values or objects for output.
+
+### Examples
+
+###### Code:
+```js
+printm("message", "additional output");
+```
+###### Output:
+```txt
+message additional output
+```
+
+**Returns [*`string`*][1]** - the first message argument printed.
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
