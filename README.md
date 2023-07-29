@@ -42,7 +42,7 @@ Import `loggedmessage` with:
 ```js
 import loggedmessage from "loggedmessage";
 //  or
-import { logm, errm, throwm, warnm, infom, timem } from "loggedmessage";
+import { logm, errm, throwm, warnm, infom, timem, printm } from "loggedmessage";
 ```
 
 The core of `loggedmessage` is the logging functions it provides. To log to the console:
