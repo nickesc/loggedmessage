@@ -1,23 +1,21 @@
 <h3 align="center" >
-  <a href="https://github.com/nickesc/loggedmessage"><img alt="Source: github.com/nickesc/loggedmessage" src="https://img.shields.io/badge/source-github.com/nickesc/loggedmessage-brightgreen?style=for-the-badge"></a><br>
-  <a href="https://www.npmjs.com/package/loggedmessage"><img alt="NPM: npmjs.com/package/loggedmessage" src="https://img.shields.io/badge/npm-npmjs.com/package/loggedmessage-C12127?style=for-the-badge"></a>
-  <br><br>
-  <a href="https://github.com/nickesc/loggedmessage/actions/workflows/node.js.yml"><img style="margin-top: .5em" alt="Source: github.com/nickesc/loggedmessage" src="https://img.shields.io/github/actions/workflow/status/nickesc/loggedmessage/node.js.yml?logo=github&label=test"></a><br>
+  <a href="https://github.com/nickesc/loggedmessage"><img alt="Source: Github" src="https://img.shields.io/badge/source-github-brightgreen?style=for-the-badge&logo=github&labelColor=%23505050"></a>
+  <a href="https://github.com/nickesc/loggedmessage/actions/workflows/node.js.yml"><img alt="Tests: github.com/nickesc/loggedmessage/actions/workflows/node.js.yml" src="https://img.shields.io/github/actions/workflow/status/nickesc/loggedmessage/node.js.yml?logo=github&label=tests&logoColor=white&style=for-the-badge&labelColor=%23505050"></a>
+  <br>
+  <a href="https://www.npmjs.com/package/loggedmessage"><img alt="NPM: npmjs.com/package/loggedmessage" src="https://img.shields.io/npm/v/loggedmessage?style=for-the-badge&logo=npm&logoColor=white&label=npm&color=%23C12127&labelColor=%23505050"></a>
+  <br>
   <h3 align="center">
     <code>loggedmessage</code>
   </h3>
-  <h4 align="center">
-    <code>v1.1.2</code>
-  </h4>
+  <h5 align="center">
+    
+  </h5>
   <h6 align="center">
     by <a href="https://nickesc.github.io">N. Escobar</a> / <a href="https://github.com/nickesc">nickesc</a>
   </h6>
   <h6 align="center">
     a simple but flexible console logging library with <br> common-sense builtin functions and defaults
   </h6>
-  <h4 align="center">
-    <code style="font-size:.8em; padding: 5px;">npm i loggedmessage</code>
-  </h4>
 </h3>
 
 <br>
@@ -26,48 +24,53 @@
 
 `loggedmessage` is a simple but flexible console logging library written in JavaScript with no dependencies. `loggedmessage` comes with common-sense builtin functions and defaults, and works right out of the box. 
 
-The package provides you with functions like `logm` and `timem` to log messages to the console with standard formatting, as well as functions like `errm` and `throwm` for error handling. Also included is `printm`, a simple wrapper for `console.log()` that returns an array of the arguments it's given.
+The package provides you with functions `logm()`, `infom()` and `timem()` to log messages to the console with standard formatting, as well as functions `errm()`, `warnm()` and `throwm()` for error handling. Also included is `printm()`, a simple wrapper for `console.log()` that returns an array of the arguments it's given.
 
 ### Install
 
-Install `loggedmessage` using NPM:
+Install `loggedmessage` via NPM:
 
 ```sh
-npm i loggedmessage
+$ npm i loggedmessage
 ```
 
 ### Basic Usage
 
-Import `loggedmessage` with:
+##### Import:
+
+Import the library in your code:
+
 ```js
 import loggedmessage from "loggedmessage";
 //  or
-import { logm, errm, throwm, warnm, infom, timem, printm } from "loggedmessage";
+import { logm, errm, warnm, infom, timem, printm, throwm } from "loggedmessage";
 ```
+> `loggedmessage` must be imported as an ES6 module.
 
-The core of `loggedmessage` is the logging functions it provides. To log to the console:
+##### Logging:
+
+To log to the console:
 
 ``` js
 import lm from "loggedmessage";
 
 lm.logm("This is a log message");
-lm.infom("Server listening on port 3000");
-lm.timem("Received a GET request for /");
 lm.errm("Failed to connect to server");
 lm.warnm("Request for /:user failed without authorization");
-lm.throwm("Invalid configuration file");
+lm.infom("Server listening on port 3000");
+lm.timem("Received a GET request for /");
 lm.printm("A regular console.log() statement");
+lm.throwm("Invalid configuration file");
 ```
-
-Which outputs:
+###### Output:
 
 ```text
 LOGM: This is a log message
+ERRM: Failed to connect to server
+WARNM: Request for /:user failed without authorization
 INFOM: Server listening on port 3000
 12/31/1999, 12:35:00 PM: Received a GET request for /
 A regular console.log() statement
-ERRM: Failed to connect to server
-WARNM: Request for /:user failed without authorization
 THROWM: Invalid configuration file
 <stackTrace>
         throw new Error(`${toString(errPrefix, errSeparator)} ${checkObject(errMessage)}`);
@@ -121,9 +124,9 @@ Log a message to the console.
 
 ### Parameters
 
-*   `message` *`any`* - the message content. (optional, default `null`)
-*   `prefix` *[`string`][1]* - the message prefix text. (optional, default `null`)
-*   `separator` *[`string`][1]* - the separator string between the prefix and message text. (optional, default `null`)
+*   `message` *`any`* — the message content. (optional, default `null`)
+*   `prefix` *[`string`][1]* — the message prefix text. (optional, default `null`)
+*   `separator` *[`string`][1]* — the separator string between the prefix and message text. (optional, default `null`)
 
 ### Examples
 
@@ -137,7 +140,7 @@ logm("logged message", "LOG", " |");
 LOG | logged message
 ```
 
-**Returns [*`string`*][1]** - the full message string as `{prefix}{separator} {message}`.
+**Returns [*`string`*][1]** — the full message string as `{prefix}{separator} {message}`.
 
 -----
 ### `errm()`
@@ -146,10 +149,10 @@ Log an error to the console with the desired message.
 
 ### Parameters
 
-*   `message` *`any`* - the error message content. (optional, default `null`)
-*   `err` *[`error`][2]* - a target error to print to print. (optional, default `null`)
-*   `prefix` *[`string`][1]* - the error message prefix text. (optional, default `null`)
-*   `separator` *[`string`][1]* - the separator string between the prefix and error message text. (optional, default `null`)
+*   `message` *`any`* — the error message content. (optional, default `null`)
+*   `err` *[`error`][2]* — a target error to print to print. (optional, default `null`)
+*   `prefix` *[`string`][1]* — the error message prefix text. (optional, default `null`)
+*   `separator` *[`string`][1]* — the separator string between the prefix and error message text. (optional, default `null`)
 
 ### Examples
 
@@ -165,7 +168,108 @@ ERROR | error message
     at <stackTrace>
 ```
 
-**Returns [*`string`*][1]** - the full error message string as `{prefix}{separator} {message}`.
+**Returns [*`string`*][1]** — the full error message string as `{prefix}{separator} {message}`.
+
+-----
+### `warnm()`
+
+Log a warning message/error to the console with the desired message.
+
+### Parameters
+
+*   `message` *`any`* — the warning message content. (optional, default `null`)
+*   `err` *[`error`][2]* — a target error to print. (optional, default `null`)
+*   `separator` *[`string`][1]* — the separator string between the prefix and warning message text. (optional, default `null`)
+
+### Examples
+
+###### Code:
+```js
+warnm("warning message", new Error("error text"), " |");
+```
+
+###### Output:
+```txt
+WARNM | warning message 
+ Error: error text
+    at <stackTrace>
+```
+
+**Returns [*`string`*][1]** — the full warning message string as `{prefix}{separator} {message}`.
+
+-----
+### `infom()`
+
+Log an info message/error to the console with the desired message.
+
+### Parameters
+
+*   `message` *`any`* — the info message content. (optional, default `null`)
+*   `err` *[`error`][2]* — a target error to print. (optional, default `null`)
+*   `separator` *[`string`][1]* — the separator string between the prefix and info message text. (optional, default `null`)
+
+### Examples
+
+###### Code:
+```js
+infom("information message", undefined, " |");
+```
+
+###### Output:
+```txt
+INFOM | information message
+```
+
+**Returns [*`string`*][1]** — the full info message string as `{prefix}{separator} {message}`.
+
+-----
+### `timem()`
+
+Log a message/error to the console with the desired message and the current time.
+
+### Parameters
+
+*   `message` *`any`* — the message content. (optional, default `null`)
+*   `err` *[`error`][2]* — a target error to print. (optional, default `null`)
+*   `separator` *[`string`][1]* — the separator string between the prefix and message text. (optional, default `null`)
+
+### Examples
+
+###### Code:
+```js
+timem("time-logged message", undefined, " |");
+```
+
+###### Output:
+```txt
+12/31/1999, 12:35:00 PM | time-logged message
+```
+
+**Returns [*`string`*][1]** — the full message string as `{prefix}{separator} {message}`.
+
+-----
+### `printm()`
+
+Print a message to the console (wrapper for `console.log()`).
+
+### Parameters
+
+*   `message` *`any`* — the message content.
+*   `optionalParams` *`...any`* — additional values or objects for output.
+
+### Examples
+
+###### Code:
+```js
+printm("printed message", "& additional output");
+```
+
+###### Output:
+```txt
+printed message & additional output
+```
+
+**Returns [*`Array`*][3]** — an array of the arguments passed.
 
 -----
 ### `throwm()`
@@ -174,10 +278,10 @@ Throw an error with the desired message.
 
 ### Parameters
 
-*   `message` *`any`* - the error message content. (optional, default `null`)
-*   `err` *[`error`][2]* - a target error to print. (optional, default `null`)
-*   `prefix` *[`string`][1]* - the error message prefix text. (optional, default `null`)
-*   `separator` *[`string`][1]* - the separator string between the prefix and error message text. (optional, default `null`)
+*   `message` *`any`* — the error message content. (optional, default `null`)
+*   `err` *[`error`][2]* — a target error to print. (optional, default `null`)
+*   `prefix` *[`string`][1]* — the error message prefix text. (optional, default `null`)
+*   `separator` *[`string`][1]* — the separator string between the prefix and error message text. (optional, default `null`)
 
 ### Examples
 
@@ -196,108 +300,7 @@ Error: error text
     at <stackTrace>
 ```
 
-**Returns [*`string`*][1]** - the full error message string as `{prefix}{separator} {message}`.
-
------
-### `warnm()`
-
-Log a warning message/error to the console with the desired message.
-
-### Parameters
-
-*   `message` *`any`* - the warning message content. (optional, default `null`)
-*   `err` *[`error`][2]* - a target error to print. (optional, default `null`)
-*   `separator` *[`string`][1]* - the separator string between the prefix and warning message text. (optional, default `null`)
-
-### Examples
-
-###### Code:
-```js
-warnm("warning message", new Error("error text"), " |");
-```
-
-###### Output:
-```txt
-WARNM | warning message 
- Error: error text
-    at <stackTrace>
-```
-
-**Returns [*`string`*][1]** - the full warning message string as `{prefix}{separator} {message}`.
-
------
-### `infom()`
-
-Log an info message/error to the console with the desired message.
-
-### Parameters
-
-*   `message` *`any`* - the info message content. (optional, default `null`)
-*   `err` *[`error`][2]* - a target error to print. (optional, default `null`)
-*   `separator` *[`string`][1]* - the separator string between the prefix and info message text. (optional, default `null`)
-
-### Examples
-
-###### Code:
-```js
-infom("information message", undefined, " |");
-```
-
-###### Output:
-```txt
-INFOM | information message
-```
-
-**Returns [*`string`*][1]** - the full info message string as `{prefix}{separator} {message}`.
-
------
-### `timem()`
-
-Log a message/error to the console with the desired message and the current time.
-
-### Parameters
-
-*   `message` *`any`* - the message content. (optional, default `null`)
-*   `err` *[`error`][2]* - a target error to print. (optional, default `null`)
-*   `separator` *[`string`][1]* - the separator string between the prefix and message text. (optional, default `null`)
-
-### Examples
-
-###### Code:
-```js
-timem("time-logged message", undefined, " |");
-```
-
-###### Output:
-```txt
-12/31/1999, 12:35:00 PM | time-logged message
-```
-
-**Returns [*`string`*][1]** - the full message string as `{prefix}{separator} {message}`.
-
------
-### `printm()`
-
-Print a message to the console (wrapper for `console.log()`).
-
-### Parameters
-
-*   `message` *`any`* - the message content.
-*   `optionalParams` *`...any`* - additional values or objects for output.
-
-### Examples
-
-###### Code:
-```js
-printm("printed message", "& additional output");
-```
-
-###### Output:
-```txt
-printed message & additional output
-```
-
-**Returns [*`Array`*][3]** - an array of the arguments passed.
+**Returns [*`string`*][1]** — the full error message string as `{prefix}{separator} {message}`.
 
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
