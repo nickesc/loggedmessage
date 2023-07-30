@@ -297,7 +297,7 @@ printm("printed message", "& additional output");
 printed message & additional output
 ```
 
-**Returns ( [*`Array`*][3] )** an array of the arguments passed.
+**Returns [*`Array`*][3]** an array of the arguments passed.
 
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

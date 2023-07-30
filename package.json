@@ -1,6 +1,6 @@
 {
   "name": "loggedmessage",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "a simple but flexible console logging library with common-sense builtin functions and defaults",
   "type": "module",
   "main": "loggedmessage.js",
