@@ -7,7 +7,7 @@
     <code>loggedmessage</code>
   </h3>
   <h4 align="center">
-    <code>v1.0.0</code>
+    <code>v1.1.0</code>
   </h4>
   <h6 align="center">
     by <a href="https://nickesc.github.io">N. Escobar</a> / <a href="https://github.com/nickesc">nickesc</a>
@@ -26,7 +26,7 @@
 
 `loggedmessage` is a simple but flexible console logging library written in JavaScript with no dependencies. `loggedmessage` comes with common-sense builtin functions and defaults, and works right out of the box. 
 
-The package provides you with functions like `logm` and `timem` to log messages to the console with standard formatting, as well as functions like `errm` and `throwm` for error handling.
+The package provides you with functions like `logm` and `timem` to log messages to the console with standard formatting, as well as functions like `errm` and `throwm` for error handling. Also included is `printm`, a simple wrapper for `console.log()` that returns an array of the arguments it's given.
 
 ### Install
 
@@ -50,12 +50,30 @@ The core of `loggedmessage` is the logging functions it provides. To log to the 
 ``` js
 import lm from "loggedmessage";
 
-lm.logm("This is a log message") // output -> LOGM: This is a log message
-lm.infom("Server listening on port 3000") // output -> INFOM: Server listening on port 3000
-lm.timem("Received a GET request for /") // output -> M/D/Y, h:m:s AM: Received a GET request for /
-lm.errm("Failed to connect to server") // output -> ERRM: Failed to connect to server
-lm.warnm("Request for /:user failed without authorization") // output -> WARNM: Request for /:user failed without authorization
-lm.throwm("Invalid configuration file") // output -> THROWM: "Invalid configuration file" -> thrown error
+lm.logm("This is a log message");
+lm.infom("Server listening on port 3000");
+lm.timem("Received a GET request for /");
+lm.errm("Failed to connect to server");
+lm.warnm("Request for /:user failed without authorization");
+lm.throwm("Invalid configuration file");
+lm.printm("A regular console.log() statement");
+```
+
+Which outputs:
+
+```text
+LOGM: This is a log message
+INFOM: Server listening on port 3000
+12/31/1999, 12:35:00 PM: Received a GET request for /
+A regular console.log() statement
+ERRM: Failed to connect to server
+WARNM: Request for /:user failed without authorization
+THROWM: Invalid configuration file
+<stackTrace>
+        throw new Error(`${toString(errPrefix, errSeparator)} ${checkObject(errMessage)}`);
+              ^
+Error: THROWM: Invalid configuration file
+    at <stackTrace>
 ```
 
 ## Configuration
@@ -111,12 +129,12 @@ Log a message to the console.
 
 ###### Code:
 ```js
-logm("message","LOG"," |");
+logm("logged message", "LOG", " |");
 ```
 
 ###### Output:
 ```txt
-LOG | message
+LOG | logged message
 ```
 
 **Returns [*`string`*][1]** - the full message string as `{prefix}{separator} {message}`.
@@ -137,14 +155,14 @@ Log an error to the console with the desired message.
 
 ###### Code:
 ```js
-errm("message", new Error("error"),"ERROR"," |");
+errm("error message", new Error("error text"), "ERROR", " |");
 ```
 
 ###### Output:
 ```txt
-ERROR | message
- Error: error
-    at errorLocation
+ERROR | error message 
+ Error: error text
+    at <stackTrace>
 ```
 
 **Returns [*`string`*][1]** - the full error message string as `{prefix}{separator} {message}`.
@@ -165,17 +183,17 @@ Throw an error with the desired message.
 
 ###### Code:
 ```js
-throwm("message", new Error("error"),"ERROR"," |");
+throwm("thrown error message", new Error("error text"), "ERROR", " |");
 ```
 
 ###### Output:
 ```txt
-ERROR | message
-errorLocation
-throwm("message", new Error("error"), "ERROR", " |");
-                  ^
-Error: error
-    at errorLocation
+ERROR | thrown error message
+<stackTrace>
+throwm("thrown error message", new Error("error text"), "ERROR", " |");
+                               ^
+Error: error text
+    at <stackTrace>
 ```
 
 **Returns [*`string`*][1]** - the full error message string as `{prefix}{separator} {message}`.
@@ -195,14 +213,14 @@ Log a warning message/error to the console with the desired message.
 
 ###### Code:
 ```js
-warnm("message", new Error("error")," |");
+warnm("warning message", new Error("error text"), " |");
 ```
 
 ###### Output:
 ```txt
-WARNM | message
- Error: error
-    at errorLocation
+WARNM | warning message 
+ Error: error text
+    at <stackTrace>
 ```
 
 **Returns [*`string`*][1]** - the full warning message string as `{prefix}{separator} {message}`.
@@ -222,14 +240,12 @@ Log an info message/error to the console with the desired message.
 
 ###### Code:
 ```js
-infom("message", new Error("error")," |");
+infom("information message", undefined, " |");
 ```
 
 ###### Output:
 ```txt
-INFOM | message
- Error: error
-    at errorLocation
+INFOM | information message
 ```
 
 **Returns [*`string`*][1]** - the full info message string as `{prefix}{separator} {message}`.
@@ -249,14 +265,12 @@ Log a message/error to the console with the desired message and the current time
 
 ###### Code:
 ```js
-timem("message", new Error("error")," |");
+timem("time-logged message", undefined, " |");
 ```
 
 ###### Output:
 ```txt
-1/1/1999, 12:30:00 AM | message
- Error: error
-    at errorLocation
+12/31/1999, 12:35:00 PM | time-logged message
 ```
 
 **Returns [*`string`*][1]** - the full message string as `{prefix}{separator} {message}`.
@@ -275,15 +289,21 @@ Print a message to the console (wrapper for `console.log()`).
 
 ###### Code:
 ```js
-printm("message", "additional output");
-```
-###### Output:
-```txt
-message additional output
+printm("printed message", "& additional output");
 ```
 
-**Returns [*`string`*][1]** - the first argument printed.
+###### Output:
+```txt
+printed message & additional output
+```
+
+**Returns ( [*`Array`*][3] | [*`string`*][2] | [*`undefined`*][4] )** an array of the arguments passed.
+
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined

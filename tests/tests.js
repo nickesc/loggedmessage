@@ -52,12 +52,21 @@ function breakBreak(){
     console.log("\n\n");
 }
 
+function testPrint(test, expectedResult){
+    try{
+        assert(JSON.stringify(test) == JSON.stringify(expectedResult), true);
+    } catch (err) {
+        console.error(new Error(`Did not test as equal (test top, expectedResult bottom):\n${test}\n${expectedResult}`))
+        console.error("\n\nFAILURE: loggedmessage FAILED automated tests!\n\n");
+        throw err;
+    }
+}
+
 function testMessage(test, expectedResult){
     try{
         assert(test === expectedResult,true);
     } catch (err) {
         console.error(new Error(`Did not test as equal (test top, expectedResult bottom):\n${test}\n${expectedResult}`))
-        testLogm();
         console.error("\n\nFAILURE: loggedmessage FAILED automated tests!\n\n");
         throw err;
     }
@@ -85,18 +94,21 @@ function testThrow(message, err, prefix, separator, expectedResult){
 
 function testLogm(){
 
-    testMessage(
+    testPrint(
         lm.printm(testerPrint),
-        testerPrint);
-    testMessage(
+        [testerPrint]);
+    testPrint(
         lm.printm(testerPrint, testerObject),
-        testerPrint);
-    testMessage(
+        [testerPrint,testerObject]);
+    testPrint(
         lm.printm(""),
-        "");
-    testMessage(
+        [""]);
+    testPrint(
         lm.printm(),
-        undefined);
+        []);
+    testPrint(
+        lm.printm(undefined, undefined, undefined),
+        [undefined, undefined, undefined]);
 
     testMessage(
         lm.logm(),

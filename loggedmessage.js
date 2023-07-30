@@ -64,12 +64,10 @@ function checkObject(target){
  * @param    {string}  separator  -  the separator string between the prefix and message text.
  * @returns  {string}  the full message string as `{prefix}{separator} {message}`.
  * @example
- *
  * ###### Code:
  * ```js
  * logm("message","LOG"," |");
  * ```
- *
  * ###### Output:
  * ```txt
  * LOG | message
@@ -97,12 +95,10 @@ function logm(message = null, prefix = null, separator = null){
  * @param    {string}  separator  -  the separator string between the prefix and error message text.
  * @returns  {string}  the full error message string as `{prefix}{separator} {message}`.
  * @example
- *
  * ###### Code:
  * ```js
  * errm("message", new Error("error"),"ERROR"," |");
  * ```
- *
  * ###### Output:
  * ```txt
  * ERROR | message
@@ -137,12 +133,10 @@ function errm(message = null, err = null, prefix = null, separator = null){
  * @param    {string}  separator  -  the separator string between the prefix and error message text.
  * @returns  {string}  the full error message string as `{prefix}{separator} {message}`.
  * @example
- *
  * ###### Code:
  * ```js
  * throwm("message", new Error("error"),"ERROR"," |");
  * ```
- *
  * ###### Output:
  * ```txt
  * ERROR | message
@@ -178,12 +172,10 @@ function throwm(message = null, err = null, prefix = null, separator = null){
  * @param    {string}  separator  -  the separator string between the prefix and warning message text.
  * @returns  {string}  the full warning message string as `{prefix}{separator} {message}`.
  * @example
- *
  * ###### Code:
  * ```js
  * warnm("message", new Error("error")," |");
  * ```
- *
  * ###### Output:
  * ```txt
  * WARNM | message
@@ -205,12 +197,10 @@ function warnm(message = null, err = null, separator = null){
  * @param    {string}  separator  -  the separator string between the prefix and info message text.
  * @returns  {string}  the full info message string as `{prefix}{separator} {message}`.
  * @example
- *
  * ###### Code:
  * ```js
  * infom("message", new Error("error")," |");
  * ```
- *
  * ###### Output:
  * ```txt
  * INFOM | message
@@ -238,12 +228,10 @@ function infom(message = null, err = null, separator = null){
  * @param    {string}  separator  -  the separator string between the prefix and message text.
  * @returns  {string}  the full message string as `{prefix}{separator} {message}`.
  * @example
- *
  * ###### Code:
  * ```js
  * timem("message", new Error("error")," |");
  * ```
- *
  * ###### Output:
  * ```txt
  * 1/1/1999, 12:30:00 AM | message
@@ -269,9 +257,8 @@ function timem(message = null, err = null, separator = null) {
  *
  * @param    {any}     message         -  the message content.
  * @param    {...any}  optionalParams  -  additional values or objects for output.
- * @returns  {string}  the first argument printed.
+ * @returns  {Array}  an array of the arguments passed.
  * @example
- *
  * ###### Code:
  * ```js
  * printm("message", "additional output");
@@ -281,9 +268,14 @@ function timem(message = null, err = null, separator = null) {
  * message additional output
  * ```
  */
-function printm(message) {
+function printm(message, ...optionalParams) {
     console.log.apply(console, arguments);
-    return message;
+
+    let returnArray = []
+    for(let i=0; i<arguments.length; i++){
+        returnArray.push(arguments[i])
+    }
+    return returnArray;
 }
 
 export { logm, errm, throwm, warnm, infom, timem, printm };
