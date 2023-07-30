@@ -25,9 +25,9 @@ const prefixSeparator = dotenvConfig.PREFIX_SEPARATOR || "";  // separator strin
 
 const defaultLogmPrefix   = `${prefixAbr}${prefixSeparator}${dotenvConfig.LOGM_PREFIX || "LOGM"}`;  // default message type for log messages
 const defaultErrmPrefix   = `${prefixAbr}${prefixSeparator}${dotenvConfig.ERRM_PREFIX || "ERRM"}`;  // default message type for error messages
-const defaultThrowmPrefix = `${prefixAbr}${prefixSeparator}${dotenvConfig.THROWM_PREFIX || "THROWM"}`;  // default message type for thrown error messages
 const defaultWarnmPrefix  = `${prefixAbr}${prefixSeparator}${dotenvConfig.WARNM_PREFIX || "WARNM"}`;  // default message type for warning messages
 const defaultInfomPrefix  = `${prefixAbr}${prefixSeparator}${dotenvConfig.INFOM_PREFIX || "INFOM"}`;  // default message type for info messages
+const defaultThrowmPrefix = `${prefixAbr}${prefixSeparator}${dotenvConfig.THROWM_PREFIX || "THROWM"}`;  // default message type for thrown error messages
 
 const timemLocale = dotenvConfig.TIMEM_LOCALE || "en-US";  // set the time locale
 function defaultTimemPrefix () {  // function to return the formatted time prefix on time messages
@@ -123,46 +123,6 @@ function errm(message = null, err = null, prefix = null, separator = null){
 }
 
 /**
- * ### `throwm()`
- *
- * Throw an error with the desired message.
- *
- * @param    {any}     message    -  the error message content.
- * @param    {Error}   err        -  a target error to print.
- * @param    {string}  prefix     -  the error message prefix text.
- * @param    {string}  separator  -  the separator string between the prefix and error message text.
- * @returns  {string}  the full error message string as `{prefix}{separator} {message}`.
- * @example
- * ###### Code:
- * ```js
- * throwm("message", new Error("error"),"ERROR"," |");
- * ```
- * ###### Output:
- * ```txt
- * ERROR | message
- * errorLocation
- * throwm("message", new Error("error"), "ERROR", " |");
- *                   ^
- * Error: error
- *     at errorLocation
- * ```
- */
-function throwm(message = null, err = null, prefix = null, separator = null){
-    let errMessage = message || defaultErrMessage;  // set error content
-    let errErr = err || defaultErr;
-    let errPrefix = prefix || defaultThrowmPrefix;
-    let errSeparator = separator|| defaultSeparator;
-
-    let errtString = toString(errPrefix, errSeparator);  // format string
-    console.error(errtString, errMessage);  // log and throw error
-    if (errErr){
-        throw errErr;
-    } else {
-        throw new Error(`${toString(errPrefix, errSeparator)} ${checkObject(errMessage)}`);
-    }
-}
-
-/**
  * ### `warnm()`
  *
  * Log a warning message/error to the console with the desired message.
@@ -249,7 +209,6 @@ function timem(message = null, err = null, separator = null) {
     }
 }
 
-
 /**
  * ### `printm()`
  *
@@ -278,5 +237,45 @@ function printm(message, ...optionalParams) {
     return returnArray;
 }
 
-export { logm, errm, throwm, warnm, infom, timem, printm };
-export default { logm, errm, throwm, warnm, infom, timem, printm};  // export functions
+/**
+ * ### `throwm()`
+ *
+ * Throw an error with the desired message.
+ *
+ * @param    {any}     message    -  the error message content.
+ * @param    {Error}   err        -  a target error to print.
+ * @param    {string}  prefix     -  the error message prefix text.
+ * @param    {string}  separator  -  the separator string between the prefix and error message text.
+ * @returns  {string}  the full error message string as `{prefix}{separator} {message}`.
+ * @example
+ * ###### Code:
+ * ```js
+ * throwm("message", new Error("error"),"ERROR"," |");
+ * ```
+ * ###### Output:
+ * ```txt
+ * ERROR | message
+ * errorLocation
+ * throwm("message", new Error("error"), "ERROR", " |");
+ *                   ^
+ * Error: error
+ *     at errorLocation
+ * ```
+ */
+function throwm(message = null, err = null, prefix = null, separator = null){
+    let errMessage = message || defaultErrMessage;  // set error content
+    let errErr = err || defaultErr;
+    let errPrefix = prefix || defaultThrowmPrefix;
+    let errSeparator = separator|| defaultSeparator;
+
+    let errtString = toString(errPrefix, errSeparator);  // format string
+    console.error(errtString, errMessage);  // log and throw error
+    if (errErr){
+        throw errErr;
+    } else {
+        throw new Error(`${toString(errPrefix, errSeparator)} ${checkObject(errMessage)}`);
+    }
+}
+
+export { logm, errm, warnm, infom, timem, printm, throwm };
+export default { logm, errm, warnm, infom, timem, printm, throwm };  // export functions
