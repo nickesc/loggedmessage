@@ -16,3 +16,7 @@
 
 ### Changed:
 - edited README errors
+
+## v1.1.2 - 7/29/23
+### Changed:
+- Update README version...

@@ -7,7 +7,7 @@
     <code>loggedmessage</code>
   </h3>
   <h4 align="center">
-    <code>v1.1.0</code>
+    <code>v1.1.2</code>
   </h4>
   <h6 align="center">
     by <a href="https://nickesc.github.io">N. Escobar</a> / <a href="https://github.com/nickesc">nickesc</a>
