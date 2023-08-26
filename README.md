@@ -108,6 +108,7 @@ MESSAGE_SEPARATOR = " ::"
 ### (leave commented to use the default text)
 LOG_MESSAGE   = "a new message was logged"
 ERROR_MESSAGE = "a new error has occurred"
+WARN_MESSAGE  = "a new warning was logged"
 
 ### Time message locale
 ### (leave commented to use "en-US")
