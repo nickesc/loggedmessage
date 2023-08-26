@@ -150,7 +150,7 @@ Log an error to the console with the desired message.
 ### Parameters
 
 *   `message` *`any`* — the error message content. (optional, default `null`)
-*   `err` *[`error`][2]* — a target error to print to print. (optional, default `null`)
+*   `err` *[`Error`][2]* — a target error to print to print. (optional, default `null`)
 *   `prefix` *[`string`][1]* — the error message prefix text. (optional, default `null`)
 *   `separator` *[`string`][1]* — the separator string between the prefix and error message text. (optional, default `null`)
 
@@ -178,7 +178,7 @@ Log a warning message/error to the console with the desired message.
 ### Parameters
 
 *   `message` *`any`* — the warning message content. (optional, default `null`)
-*   `err` *[`error`][2]* — a target error to print. (optional, default `null`)
+*   `err` *[`Error`][2]* — a target error to print. (optional, default `null`)
 *   `separator` *[`string`][1]* — the separator string between the prefix and warning message text. (optional, default `null`)
 
 ### Examples
@@ -205,7 +205,7 @@ Log an info message/error to the console with the desired message.
 ### Parameters
 
 *   `message` *`any`* — the info message content. (optional, default `null`)
-*   `err` *[`error`][2]* — a target error to print. (optional, default `null`)
+*   `err` *[`Error`][2]* — a target error to print. (optional, default `null`)
 *   `separator` *[`string`][1]* — the separator string between the prefix and info message text. (optional, default `null`)
 
 ### Examples
@@ -230,7 +230,7 @@ Log a message/error to the console with the desired message and the current time
 ### Parameters
 
 *   `message` *`any`* — the message content. (optional, default `null`)
-*   `err` *[`error`][2]* — a target error to print. (optional, default `null`)
+*   `err` *[`Error`][2]* — a target error to print. (optional, default `null`)
 *   `separator` *[`string`][1]* — the separator string between the prefix and message text. (optional, default `null`)
 
 ### Examples
@@ -279,7 +279,7 @@ Throw an error with the desired message.
 ### Parameters
 
 *   `message` *`any`* — the error message content. (optional, default `null`)
-*   `err` *[`error`][2]* — a target error to print. (optional, default `null`)
+*   `err` *[`Error`][2]* — a target error to print. (optional, default `null`)
 *   `prefix` *[`string`][1]* — the error message prefix text. (optional, default `null`)
 *   `separator` *[`string`][1]* — the separator string between the prefix and error message text. (optional, default `null`)
 

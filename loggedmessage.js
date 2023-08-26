@@ -169,12 +169,16 @@ function warnm(message = null, err = null, separator = null){
  * ```
  */
 function infom(message = null, err = null, separator = null){
-    let infomPrefix = defaultInfomPrefix;  // set message content
-
+    let infomMessage = message || defaultLogMessage; // set message content
+    let infomPrefix = defaultInfomPrefix;
+    let infomSeparator = separator || defaultSeparator;
     if (err){  // send an and return error/message as info
         return errm(message, err, infomPrefix, separator);
     } else {
-        return logm(message, infomPrefix, separator);
+        let infomString = toString(infomPrefix, infomSeparator); // format string
+        console.info(infomString, infomMessage); // log and return message
+
+        return `${infomString} ${checkObject(infomMessage)}`;
     }
 }
 

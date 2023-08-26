@@ -32,3 +32,11 @@
 - reordered functions
 - reordered tests
 - edited README shields and formatting
+
+## v1.2.0 - 8/26/23
+
+### Changed:
+- changed `infom` to use `console.info()` instead of `console.log()`
+
+## Fixed
+- updated `error` to `Error` in `README.md`
