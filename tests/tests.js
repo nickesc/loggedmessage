@@ -21,6 +21,7 @@ const testSeparator = process.env.MESSAGE_SEPARATOR || ":";
 
 const testLogMessage = process.env.LOG_MESSAGE || "a message was logged";
 const testErrMessage = process.env.ERROR_MESSAGE || "an error occurred";
+const testWarnMessage = process.env.WARN_MESSAGE || "a warning was logged";
 
 const testerMessage = "test message"
 const testerPrefix = "test prefix"
@@ -196,7 +197,7 @@ function testLogm(){
 
     testMessage(
         lm.warnm(),
-        `${testWarnmPrefix}${testSeparator} ${testErrMessage}`);
+        `${testWarnmPrefix}${testSeparator} ${testWarnMessage}`);
     testMessage(
         lm.warnm(testerMessage),
         `${testWarnmPrefix}${testSeparator} ${testerMessage}`);
@@ -211,16 +212,16 @@ function testLogm(){
         `${testWarnmPrefix}${testerSeparator} ${testerMessage}\n`);
     testMessage(
         lm.warnm(undefined, testerError, undefined),
-        `${testWarnmPrefix}${testSeparator} ${testErrMessage}\n`);
+        `${testWarnmPrefix}${testSeparator} ${testWarnMessage}\n`);
     testMessage(
         lm.warnm(undefined, new SyntaxError(), undefined),
-        `${testWarnmPrefix}${testSeparator} ${testErrMessage}\n`);
+        `${testWarnmPrefix}${testSeparator} ${testWarnMessage}\n`);
     testMessage(
         lm.warnm(undefined, new SyntaxError(), testerSeparator),
-        `${testWarnmPrefix}${testerSeparator} ${testErrMessage}\n`);
+        `${testWarnmPrefix}${testerSeparator} ${testWarnMessage}\n`);
     testMessage(
         lm.warnm(undefined, testerError, testerSeparator),
-        `${testWarnmPrefix}${testerSeparator} ${testErrMessage}\n`);
+        `${testWarnmPrefix}${testerSeparator} ${testWarnMessage}\n`);
     testMessage(
         lm.warnm(testerObject),
         `${testWarnmPrefix}${testSeparator} ${JSON.stringify(testerObject)}`);
@@ -259,16 +260,16 @@ function testLogm(){
         `${testInfomPrefix}${testerSeparator} ${testerMessage}\n`);
     testMessage(
         lm.infom(undefined, testerError, undefined),
-        `${testInfomPrefix}${testSeparator} ${testErrMessage}\n`);
+        `${testInfomPrefix}${testSeparator} ${testLogMessage}\n`);
     testMessage(
         lm.infom(undefined, new TypeError(), undefined),
-        `${testInfomPrefix}${testSeparator} ${testErrMessage}\n`);
+        `${testInfomPrefix}${testSeparator} ${testLogMessage}\n`);
     testMessage(
         lm.infom(undefined, new TypeError(), testerSeparator),
-        `${testInfomPrefix}${testerSeparator} ${testErrMessage}\n`);
+        `${testInfomPrefix}${testerSeparator} ${testLogMessage}\n`);
     testMessage(
         lm.infom(undefined, testerError, testerSeparator),
-        `${testInfomPrefix}${testerSeparator} ${testErrMessage}\n`);
+        `${testInfomPrefix}${testerSeparator} ${testLogMessage}\n`);
     testMessage(
         lm.infom(testerObject),
         `${testInfomPrefix}${testSeparator} ${JSON.stringify(testerObject)}`);

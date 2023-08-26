@@ -37,6 +37,7 @@
 
 ### Changed:
 - changed `infom` to use `console.info()` instead of `console.log()`
+- changed `warnm` to use `console.warn()` instead of `console.log()`
 
 ## Fixed
 - updated `error` to `Error` in `README.md`

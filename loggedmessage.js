@@ -38,6 +38,7 @@ const defaultSeparator = dotenvConfig.MESSAGE_SEPARATOR || ":";  // separator st
 
 const defaultLogMessage = dotenvConfig.LOG_MESSAGE || "a message was logged";  // default message text for a regular message
 const defaultErrMessage = dotenvConfig.ERROR_MESSAGE || "an error occurred";  // default message text for an error
+const defaultWarnMessage = dotenvConfig.WARN_MESSAGE || "a warning was logged";  // default message text for a regular message
 
 const defaultErr = null;  // default non-error for the error parameter
 
@@ -144,7 +145,16 @@ function errm(message = null, err = null, prefix = null, separator = null){
  * ```
  */
 function warnm(message = null, err = null, separator = null){
-    return errm(message, err, defaultWarnmPrefix, separator);  // send and return an error as a warning
+    let warnmMessage = message || defaultWarnMessage; // set message content
+    let warnmPrefix = defaultWarnmPrefix;
+    let warnmSeparator = separator || defaultSeparator;
+    if (err){
+        return errm(warnmMessage, err, warnmPrefix, warnmSeparator); // send and return an error as a warning
+    } else {
+        let warnmString = toString(warnmPrefix, warnmSeparator); // format string
+        console.info(warnmString, warnmMessage); // log and return warning
+        return `${warnmString} ${checkObject(warnmMessage)}`;
+    }
 }
 
 /**
@@ -172,12 +182,11 @@ function infom(message = null, err = null, separator = null){
     let infomMessage = message || defaultLogMessage; // set message content
     let infomPrefix = defaultInfomPrefix;
     let infomSeparator = separator || defaultSeparator;
-    if (err){  // send an and return error/message as info
-        return errm(message, err, infomPrefix, separator);
+    if (err){  // send and return error/message as info
+        return errm(infomMessage, err, infomPrefix, infomSeparator);
     } else {
         let infomString = toString(infomPrefix, infomSeparator); // format string
-        console.info(infomString, infomMessage); // log and return message
-
+        console.info(infomString, infomMessage); // log and return info message
         return `${infomString} ${checkObject(infomMessage)}`;
     }
 }
